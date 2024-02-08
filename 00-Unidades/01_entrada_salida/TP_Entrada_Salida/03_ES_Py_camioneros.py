@@ -47,14 +47,15 @@ class App(customtkinter.CTk):
         self.btn_tiempo_llegada.grid(row=4, pady=10, padx=30, columnspan=2, sticky="nsew")
     
     def btn_cantidad_camiones_on_click(self):
-        toneladas = int(self.txt_toneladas.get())
+        toneladas = float(self.txt_toneladas.get())
         camiones_necesitados = math.ceil(toneladas*1000/3500)
         alert("Camiones necesitados", "Para transportar " + str(toneladas) + " tonelada(s) se necesitará(n) " + str(camiones_necesitados) + " camión(es).")
 
     def btn_tiempo_llegada_on_click(self):
         kilometros = int(self.txt_kilometros.get())
-        horas_viaje = kilometros/90
-        alert("Horas de viaje", "Un viaje de " + str(kilometros) + " kilometros demorará aproximadamente " + str(horas_viaje) + " hora(s).")
+        horas_viaje = math.floor(kilometros/90)
+        minutos_viaje = math.ceil((kilometros/90-horas_viaje)*60)
+        alert("Horas de viaje", f"Un viaje de {str(kilometros)} kilometros demorará aproximadamente {str(horas_viaje)} hora(s) y {str(minutos_viaje)} minuto(s).")
     
     
 if __name__ == "__main__":

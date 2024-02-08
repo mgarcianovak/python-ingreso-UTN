@@ -56,23 +56,23 @@ class App(customtkinter.CTk):
         self.importe_producto_3 = None
 
     def save_values(self):
-        self.importe_producto_1 = int(self.txt_importe_1.get())
-        self.importe_producto_2 = int(self.txt_importe_2.get())
-        self.importe_producto_3 = int(self.txt_importe_3.get())
+        self.importe_producto_1 = float(self.txt_importe_1.get())
+        self.importe_producto_2 = float(self.txt_importe_2.get())
+        self.importe_producto_3 = float(self.txt_importe_3.get())
 
     def btn_total_on_click(self):
         self.save_values()
-        suma = self.importe_producto_1 + self.importe_producto_2 + self.importe_producto_3
+        suma = round(self.importe_producto_1 + self.importe_producto_2 + self.importe_producto_3, 2)
         alert(title="Suma", message="La suma del precio de los 3 productos sin IVA es de: $" + str(suma))
 
     def btn_promedio_on_click(self):
         self.save_values()
-        promedio = (self.importe_producto_1 + self.importe_producto_2 + self.importe_producto_3) / 3
+        promedio = round((self.importe_producto_1 + self.importe_producto_2 + self.importe_producto_3) / 3, 2)
         alert(title="Promedio", message="El promedio del precio de los 3 productos sin IVA es de: $" + str(promedio))
 
     def btn_total_iva_on_click(self):
         self.save_values()
-        suma_iva = (self.importe_producto_1 + self.importe_producto_2 + self.importe_producto_3) * 1.21
+        suma_iva = round((self.importe_producto_1 + self.importe_producto_2 + self.importe_producto_3) * 1.21, 2)
         alert(title="Suma", message="La suma del precio de los 3 productos con IVA 21% es de: $" + str(suma_iva))
     
 if __name__ == "__main__":
