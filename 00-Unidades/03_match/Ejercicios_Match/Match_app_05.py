@@ -37,9 +37,9 @@ class App(customtkinter.CTk):
     def btn_informar_on_click(self):
         hora = int(self.txt_hora.get())
 
-        #Resuelto con if
-        # if(hora > 6 and hora < 12):
-        #     alert(f"{hora}hs", "Es de mañana")
+        match hora:
+            case 7 | 8 | 9 | 10 | 11:
+                alert("Horario", "Es de mañana")
     
     
 if __name__ == "__main__":
