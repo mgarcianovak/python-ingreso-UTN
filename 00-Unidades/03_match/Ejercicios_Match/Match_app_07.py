@@ -34,7 +34,19 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        destino = self.combobox_destino.get()
+
+        match destino:
+            case "Bariloche":
+                orientacion = "oeste"
+            case "Mar del plata":
+                orientacion = "este"
+            case "Cataratas":
+                orientacion = "norte"
+            case "Ushuaia":
+                orientacion = "sur"
+
+        alert("Orientación", f"La orientación de {destino} es {orientacion}")
     
     
 if __name__ == "__main__":

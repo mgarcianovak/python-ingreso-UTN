@@ -57,8 +57,37 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
-            
+        estacion = self.combobox_estaciones.get()
+        destino = self.combobox_destino.get()
+
+        match estacion:
+            case "Invierno":
+                match destino:
+                    case "Bariloche":
+                        coeficiente = 1.2
+                    case "Cataratas" | "Cordoba":
+                        coeficiente = .9
+                    case "Mar del plata":
+                        coeficiente = .8
+            case "Verano":
+                match destino:
+                    case "Bariloche":
+                        coeficiente = .8
+                    case "Cataratas" | "Cordoba":
+                        coeficiente = 1.1
+                    case "Mar del plata":
+                        coeficiente = 1.2
+            case "Primavera" | "Otoño":
+                match destino:
+                    case "Bariloche" | "Cataratas" | "Mar del plata":
+                        coeficiente = 1.1
+                    case "Cordoba":
+                        coeficiente = 1
+        
+        variacion_final = round((coeficiente-1)*100, 2)
+        precio_final = 15000*coeficiente
+
+        alert("Estadía", f"Debido a que es {estacion} y el destino del viaje es {destino}, el precio base de $15.000 recibe una variación del {variacion_final}%, dando un precio final de ${precio_final}")
     
 if __name__ == "__main__":
     app = App()
