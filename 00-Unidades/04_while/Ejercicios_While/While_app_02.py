@@ -31,7 +31,7 @@ class App(customtkinter.CTk):
     def btn_mostrar_iteracion_on_click(self):
         i = 10
         while i > 0:
-            alert(f"Iteración número {11-i}",f"Valor :{i}")
+            alert(f"Iteración número {11-i}",f"El valor de i es: {i}")
             i -= 1    
     
 if __name__ == "__main__":
